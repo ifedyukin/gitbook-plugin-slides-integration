@@ -28,7 +28,8 @@ function renderBlock(block) {
 module.exports = {
   book: {
     assets: './assets',
-    css: ['plugin.css']
+    css: ['slides.css'],
+    js: ['slides.js']
   },
   blocks: {
     slides: {
