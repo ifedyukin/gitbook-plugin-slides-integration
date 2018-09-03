@@ -10,6 +10,10 @@
   height: 100%;
 }
 
+.integrate-slides__iframe--with-bar {
+  height: calc(100% - 34px) !important;
+}
+
 .integrate-slides__full {
   position: absolute;
   right: 0;
@@ -22,7 +26,9 @@
 }
 
 .integrate-slides__bar {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: rgba(0, 0, 0, 0.6);
   height: 34px;
   overflow: hidden;

@@ -12,16 +12,19 @@ var Icon = '<?xml version="1.0" ?><!DOCTYPE svg PUBLIC \'-//W3C//DTD SVG 1.1//EN
   ICON_COLOR + ';"/></g></g></svg>';
 
 function renderBlock(block) {
+  if (!block.body) return;
+
   var SLIDES = 'slides.com';
   var EMBED = '/embed';
+  var body = block.body.replace(/\n/g, '');
+  var isSlides = body.indexOf(SLIDES) !== -1;
+  var link = body.concat(isSlides ? EMBED : '');
 
-  var link = block.body;
-  var isSlides = link.indexOf(SLIDES) !== -1;
-  var postfix = isSlides ? EMBED : '';
   var helpbar = isSlides ? '' : '<div class="integrate-slides__bar"><a target="_blank"' +
     'class="integrate-slides__full" href="' + link + '">' + Icon +'</a></div>';
+  var iframeClasses = 'integrate-slides__iframe'.concat(isSlides ? '' : ' integrate-slides__iframe--with-bar');
 
-  return '<div class="integrate-slides__container"><iframe class="integrate-slides__iframe" src=' + link + postfix +
+  return '<div class="integrate-slides__container"><iframe class="' + iframeClasses + '" src=' + link +
     ' scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>' + helpbar;
 }
 
